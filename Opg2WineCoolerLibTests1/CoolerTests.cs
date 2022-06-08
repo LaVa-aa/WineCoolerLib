@@ -32,10 +32,10 @@ namespace Opg2WineCoolerLib.Tests
         [TestMethod()]
         public void CoolerIsFullTest()
         {
-            Cooler cooler = new Cooler(1, 10, 3, 11);
-            Assert.AreEqual(11,cooler.BottlesInStorage);
-           // cooler.CoolerIsFull();
-            Assert.ThrowsException<ArgumentOutOfRangeException>((() => cooler.CoolerIsFull()));
+            Cooler cooler = new Cooler(1, 10, 3, 9);
+            Assert.AreEqual(false, cooler.CoolerIsFull());
+            cooler.AddWine();
+            Assert.AreEqual(true, cooler.CoolerIsFull());
         }
 
         [TestMethod()]
@@ -60,7 +60,7 @@ namespace Opg2WineCoolerLib.Tests
         public void AddWineTest1()//testes med exepction hvis der tilføjes en ny bottle 
         {
             Cooler cooler = new Cooler(1, 9, 3, 10);
-            Assert.AreEqual(10, cooler.BottlesInStorage);
+            Assert.AreEqual(9, cooler.BottlesInStorage);
             Assert.ThrowsException<ArgumentOutOfRangeException>((() => cooler.AddWine()));
         }
     }

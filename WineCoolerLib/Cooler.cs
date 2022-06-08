@@ -21,8 +21,18 @@ namespace Opg2WineCoolerLib
 
         public int BottlesInStorage
         {
-            get;
-            set;
+            get => bottlesInStorage;
+            set
+            {
+                if (value >= CapacityOfBottles)
+                {
+                    bottlesInStorage = CapacityOfBottles;
+                }
+                else
+                {
+                    bottlesInStorage = value;
+                }
+            }
         }
 
         public Cooler()
@@ -45,25 +55,26 @@ namespace Opg2WineCoolerLib
                 return true;
             }
 
+
             //(A || B) is true. Called Logical NOT Operator. It is used to reverse the logical state of its operand. 
-            if (BottlesInStorage < 1 || BottlesInStorage > CapacityOfBottles)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            //if (BottlesInStorage < 1 || BottlesInStorage > CapacityOfBottles)
+            //{
+            //    throw new ArgumentOutOfRangeException();
+            //}
             return false;
         }
 
         public int AddWine()
         {
+            if (BottlesInStorage >= CapacityOfBottles)
+            {//fejl håndterjing rang hvor mange der er i
+                throw new ArgumentOutOfRangeException();
+            }
+
             if (CapacityOfBottles>BottlesInStorage)
             {
                 BottlesInStorage++;
-                return BottlesInStorage;
-            }
-
-            if (BottlesInStorage > CapacityOfBottles)
-            {//fejl håndterjing rang hvor mange der er i
-                throw new ArgumentOutOfRangeException();
+                
             }
             return BottlesInStorage;
         }
