@@ -7,7 +7,6 @@ namespace Opg2WineCoolerLib
     {
         //• CoolerId, et tal.
         //• Temp, et tal(valgt temperatur for cooler)
-        //• BottlesInStorage, et tal, skal være mellem 0 og CapacityOfBottles
 
         //instance feldt
         private int id;
@@ -19,6 +18,7 @@ namespace Opg2WineCoolerLib
         //• CapacityOfBottles, et tal(maks antal flasker for cooler)
         public int Temp { get; set; }
 
+        //• BottlesInStorage, et tal, skal være mellem 0 og CapacityOfBottles
         public int BottlesInStorage
         {
             get => bottlesInStorage;
