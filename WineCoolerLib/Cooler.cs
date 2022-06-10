@@ -43,9 +43,9 @@ namespace Opg2WineCoolerLib
             get => bottlesInStorage;
             set
             {
-                if (value >= CapacityOfBottles)
+                if (value < 0 || value > CapacityOfBottles)
                 {
-                    bottlesInStorage = CapacityOfBottles;
+                    throw new ArgumentOutOfRangeException();
                 }
                 else
                 {
