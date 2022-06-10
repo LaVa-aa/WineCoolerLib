@@ -13,10 +13,29 @@ namespace Opg2WineCoolerLib
         private int capacityOfBottles;
         private int temp;
         private int bottlesInStorage;
+        private string status;
         public int Id { get; set; }
         public int CapacityOfBottles { get; set; }
         //• CapacityOfBottles, et tal(maks antal flasker for cooler)
         public int Temp { get; set; }
+        
+        public string Status {
+
+            get
+            {
+                if (CoolerIsFull())
+                {
+                    return "Full";
+                }else if (BottlesInStorage == 0)
+                {
+                    return "Empty";
+                }
+                else
+                {
+                    return "Not Full";
+                }
+            }
+        }
 
         //• BottlesInStorage, et tal, skal være mellem 0 og CapacityOfBottles
         public int BottlesInStorage
@@ -78,6 +97,7 @@ namespace Opg2WineCoolerLib
             }
             return BottlesInStorage;
         }
+
 
         public override string ToString() //tage vædier lave eget string metode 
         {
